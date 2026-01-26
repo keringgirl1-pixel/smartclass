@@ -1,0 +1,99 @@
+.xp-bar-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+}
+
+.xp-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.level-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--space-xs) var(--space-md);
+    background: var(--gradient-primary);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-glow);
+}
+
+.level-label {
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    color: white;
+    opacity: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.level-number {
+    font-size: var(--font-size-2xl);
+    font-weight: 800;
+    color: white;
+    line-height: 1;
+}
+
+.xp-text {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-xs);
+    font-weight: 600;
+}
+
+.xp-current {
+    font-size: var(--font-size-lg);
+    color: var(--color-primary);
+}
+
+.xp-separator {
+    color: var(--color-text-tertiary);
+}
+
+.xp-total {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+}
+
+.xp-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-tertiary);
+    margin-left: var(--space-xs);
+}
+
+.xp-bar-track {
+    position: relative;
+    width: 100%;
+    height: 12px;
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.xp-bar-fill {
+    position: relative;
+    height: 100%;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-full);
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.xp-bar-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.3),
+            transparent);
+    animation: shimmer 2s infinite;
+}

@@ -1,0 +1,65 @@
+.quote-card {
+    padding: var(--space-xl);
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
+    border-radius: var(--radius-xl);
+    border: 2px solid var(--color-primary);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.quote-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-glass);
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.quote-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-md);
+    position: relative;
+    z-index: 1;
+}
+
+.quote-text {
+    font-size: var(--font-size-lg);
+    font-style: italic;
+    color: var(--color-text-primary);
+    line-height: 1.8;
+    margin: 0 0 var(--space-md);
+    position: relative;
+    z-index: 1;
+    font-weight: 500;
+}
+
+.quote-author {
+    font-size: var(--font-size-base);
+    color: var(--color-primary);
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
+    position: relative;
+    z-index: 1;
+}
+
+.quote-label {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .quote-text {
+        font-size: var(--font-size-base);
+    }
+}
