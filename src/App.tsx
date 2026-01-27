@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { LanguageProvider } from './context/LanguageContext';
 import './App.css';
 import Landing from './pages/Landing';
 import Login from './pages/Login';
@@ -15,27 +16,30 @@ import AITutor from './pages/AITutor';
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="app">
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/language-selection" element={<LanguageSelection />} />
-          <Route path="/lessons" element={<Lessons />} />
-          <Route path="/ai-tutor" element={<AITutor />} />
-          <Route path="/roleplay" element={<Roleplay />} />
-          <Route path="/immersion" element={<Immersion />} />
-          <Route path="/commute" element={<CommuteMode />} />
-          <Route path="/translator" element={<Translator />} />
-          <Route path="/profile" element={<Profile />} />
-        </Routes>
-      </div>
-    </BrowserRouter>
+    <LanguageProvider>
+      <BrowserRouter>
+        <div className="app">
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/language-selection" element={<LanguageSelection />} />
+            <Route path="/lessons" element={<Lessons />} />
+            <Route path="/ai-tutor" element={<AITutor />} />
+            <Route path="/roleplay" element={<Roleplay />} />
+            <Route path="/immersion" element={<Immersion />} />
+            <Route path="/commute" element={<CommuteMode />} />
+            <Route path="/translator" element={<Translator />} />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </LanguageProvider>
   );
 }
 
 export default App;
+
 
 

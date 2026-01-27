@@ -3,6 +3,29 @@
     background: var(--color-bg-primary);
 }
 
+/* Top Bar for Language Selector */
+.top-bar {
+    background: rgba(15, 23, 42, 0.9);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: var(--space-sm) 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+}
+
+.top-bar-content {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.language-selector-wrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
 /* Hero Section */
 .hero-section {
     min-height: 100vh;

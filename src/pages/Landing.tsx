@@ -1,37 +1,41 @@
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext';
+import LanguageSelector from '../components/LanguageSelector/LanguageSelector';
 import './Landing.css';
 
 const Landing = () => {
+    const { t } = useLanguage();
+
     const features = [
         {
             icon: '🌍',
-            title: '10 Languages',
-            description: 'Learn French, English, Spanish, Chinese, and more with West African context',
+            title: t('features.lessons'),
+            description: t('features.lessonsDesc'),
         },
         {
             icon: '🎯',
-            title: 'Gamified Learning',
-            description: 'Streaks, XP, levels, and achievements keep you motivated every day',
+            title: t('features.gamification'),
+            description: t('features.gamificationDesc'),
         },
         {
-            icon: '🛍️',
-            title: 'Real-World Practice',
-            description: 'Market roleplay and business scenarios prepare you for actual conversations',
+            icon: '🤖',
+            title: t('features.ai'),
+            description: t('features.aiDesc'),
         },
         {
             icon: '🎧',
             title: 'Commute Mode',
-            description: 'Learn hands-free while traveling with voice-based lessons',
+            description: 'Learn hands-free while traveling',
         },
         {
             icon: '📸',
             title: 'Live Translator',
-            description: 'Point your camera at signs and get instant translations',
+            description: 'Point your camera at signs and get translations',
         },
         {
-            icon: '🏆',
-            title: 'Track Progress',
-            description: 'Compete on leaderboards and unlock achievements as you learn',
+            icon: '🎤',
+            title: t('features.audio'),
+            description: t('features.audioDesc'),
         },
     ];
 
@@ -44,24 +48,32 @@ const Landing = () => {
 
     return (
         <div className="landing-page">
+            {/* Language Selector at top */}
+            <div className="top-bar">
+                <div className="container top-bar-content">
+                    <div className="language-selector-wrapper">
+                        <LanguageSelector variant="dropdown" />
+                    </div>
+                </div>
+            </div>
+
             {/* Hero Section */}
             <div className="hero-section">
                 <div className="container">
                     <div className="hero-content">
                         <h1 className="hero-title">
-                            <span className="title-main">SmartClass</span>
-                            <span className="title-sub">Learn Languages Smarter</span>
+                            <span className="title-main">{t('app.name')}</span>
+                            <span className="title-sub">{t('app.tagline')}</span>
                         </h1>
                         <p className="hero-description">
-                            Master languages with bite-sized lessons, AI tutors, and real-world scenarios.
-                            From casual conversations to professional negotiations.
+                            {t('hero.subtitle')}
                         </p>
                         <div className="hero-actions">
                             <Link to="/signup" className="btn btn-primary btn-hero">
-                                Get Started Free
+                                {t('hero.cta')}
                             </Link>
                             <Link to="/login" className="btn btn-secondary btn-hero">
-                                I Have an Account
+                                {t('hero.login')}
                             </Link>
                         </div>
                         <div className="hero-stats">
@@ -90,7 +102,7 @@ const Landing = () => {
             {/* Features Section */}
             <div className="features-section">
                 <div className="container">
-                    <h2 className="section-heading">Everything You Need to Learn</h2>
+                    <h2 className="section-heading">{t('features.title')}</h2>
                     <p className="section-subheading">
                         The best language learning features, all in one place
                     </p>
@@ -117,14 +129,14 @@ const Landing = () => {
                     <div className="steps-grid">
                         <div className="step-card">
                             <div className="step-number">1</div>
-                            <h3 className="step-title">Choose Your Language</h3>
+                            <h3 className="step-title">{t('home.chooseLanguage')}</h3>
                             <p className="step-description">
                                 Select from 10 languages including French, English, Spanish, and Chinese
                             </p>
                         </div>
                         <div className="step-card">
                             <div className="step-number">2</div>
-                            <h3 className="step-title">Start Learning</h3>
+                            <h3 className="step-title">{t('lessons.start')}</h3>
                             <p className="step-description">
                                 Bite-sized 5-10 minute lessons fit perfectly into your busy schedule
                             </p>
@@ -140,7 +152,7 @@ const Landing = () => {
                             <div className="step-number">4</div>
                             <h3 className="step-title">Master the Language</h3>
                             <p className="step-description">
-                                Complete 30-day courses to reach fluency in real-world business scenarios
+                                Complete 30-day courses to reach fluency in real-world scenarios
                             </p>
                         </div>
                     </div>
@@ -153,10 +165,10 @@ const Landing = () => {
                     <div className="cta-content">
                         <h2 className="cta-title">Ready to Start Learning?</h2>
                         <p className="cta-description">
-                            Join thousands of learners mastering languages for West African business
+                            Join thousands of learners mastering languages
                         </p>
                         <Link to="/signup" className="btn btn-primary btn-cta">
-                            Start Learning Now - It's Free!
+                            {t('hero.cta')}
                         </Link>
                     </div>
                 </div>
@@ -167,8 +179,8 @@ const Landing = () => {
                 <div className="container">
                     <div className="footer-content">
                         <div className="footer-brand">
-                            <h3 className="footer-logo">SmartClass</h3>
-                            <p className="footer-tagline">Learn Languages Smarter</p>
+                            <h3 className="footer-logo">{t('app.name')}</h3>
+                            <p className="footer-tagline">{t('app.tagline')}</p>
                         </div>
                         <div className="footer-links">
                             <Link to="/about">About</Link>
