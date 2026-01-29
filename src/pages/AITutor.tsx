@@ -11,6 +11,45 @@ interface Message {
     audioUrl?: string;
 }
 
+// Add strict types for Speech Recognition
+interface SpeechRecognitionEvent {
+    results: {
+        [key: number]: {
+            [key: number]: {
+                transcript: string;
+            };
+        };
+        length: number;
+    };
+}
+
+interface SpeechRecognitionErrorEvent {
+    error: string;
+    message: string;
+}
+
+interface SpeechRecognition extends EventTarget {
+    continuous: boolean;
+    interimResults: boolean;
+    lang: string;
+    start(): void;
+    stop(): void;
+    onresult: (event: SpeechRecognitionEvent) => void;
+    onerror: (event: SpeechRecognitionErrorEvent) => void;
+    onend: () => void;
+}
+
+interface SpeechRecognitionConstructor {
+    new(): SpeechRecognition;
+}
+
+declare global {
+    interface Window {
+        SpeechRecognition: SpeechRecognitionConstructor;
+        webkitSpeechRecognition: SpeechRecognitionConstructor;
+    }
+}
+
 const AITutor = () => {
     const [selectedTutor, setSelectedTutor] = useState(aiTutors[0]);
     const [selectedScenario, setSelectedScenario] = useState(scenarios[0]);
@@ -53,7 +92,7 @@ const AITutor = () => {
             };
             recognitionRef.current.lang = langMap[selectedLanguage] || 'en-US';
 
-            recognitionRef.current.onresult = (event) => {
+            recognitionRef.current.onresult = (event: SpeechRecognitionEvent) => {
                 const transcript = event.results[0][0].transcript;
                 setInputMessage(transcript);
                 setIsRecording(false);
@@ -420,12 +459,5 @@ const AITutor = () => {
     );
 };
 
-// Add SpeechRecognition type declarations
-declare global {
-    interface Window {
-        SpeechRecognition: typeof SpeechRecognition;
-        webkitSpeechRecognition: typeof SpeechRecognition;
-    }
-}
 
 export default AITutor;
